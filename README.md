@@ -47,4 +47,4 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.
 
 ---
 
-Feito com ♥ by Raphael Capeto with [Rocketseat](https://github.com/rocketseat-education) :wave: [Participe da nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
+Feito com ♥ by Raphael Capeto with [Rocketseat](https://github.com/rocketseat-education) :wave:
