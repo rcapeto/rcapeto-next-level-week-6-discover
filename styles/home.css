@@ -23,10 +23,11 @@
    grid-area: right;
    align-items: center;
    margin-right: 2rem;
+   margin-top: -12rem;
 }
 
 #home main .container {
-   width: min(36.3rem 100%);
+   width: min(36.3rem, 100%);
 }
 
 
@@ -61,10 +62,11 @@
    align-items: center;
    margin: 4rem 0;
    gap: 1.3rem;
+   font-family: 'Poppins', sans-serif;
 }
 
 #home .separator .line {
    background-color: var(--gray-blue);
-   width: 45%;
    height: 1px;
+   flex: 1;
 }
