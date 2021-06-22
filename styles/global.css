@@ -59,6 +59,7 @@ textarea {
 .content {
    width: 100%;
    margin: 0 auto;
+   overflow-x: hidden;
 }
 
 input,
@@ -104,11 +105,10 @@ button img,
 
 .content header {
    width: 80%;
-   margin: 0 auto;
+   margin: 3.5rem auto;
 }
 
-.content header img {
+.content header > img {
    width: 16.7rem;
    object-fit: cover;
-   margin: 3.5rem 0;
 }
