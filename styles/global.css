@@ -112,3 +112,25 @@ button img,
    width: 16.7rem;
    object-fit: cover;
 }
+
+button.red,
+.button.red {
+   background-color: var(--red);
+   color: var(--white);
+}
+
+button.red,
+.button.red:hover {
+   background-color: var(--hover-red);
+}
+
+button.gray,
+.button.gray {
+   background-color: var(--gray-light);
+   color: var(--gray-dark);
+}
+
+button.gray,
+.button.gray:hover {
+   background-color: var(--hover-gray);
+}
