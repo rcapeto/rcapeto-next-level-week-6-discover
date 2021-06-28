@@ -1,7 +1,7 @@
 export function controlModal() {
    const deleteButtons = document.querySelectorAll('.actions a.delete');
    const checkButtons = document.querySelectorAll('.actions a.check');
-   const roomId = document.querySelector('#room .buttons button.button span').innerHTML;
+   const roomId = document.querySelector('#room .buttons button.button').getAttribute('data-roomId');
 
    const modal = {
       main: document.querySelector('.modal-wrapper'),
@@ -51,9 +51,8 @@ export function controlModal() {
             }
             changeModalContent(checkConfig);
 
-            modal.form().setAttribute('action', `question/${roomId}/${questionId}/check`);
+            modal.form().setAttribute('action', `/question/${roomId}/${questionId}/check`);
 
-            modal.buttonAction().addEventListener('click', () => checkQuestion(question));
             break;
          case 'delete':
             const deleteConfig = {
@@ -64,9 +63,8 @@ export function controlModal() {
 
             changeModalContent(deleteConfig);
 
-            modal.form().setAttribute('action', `question/${roomId}/${questionId}/delete`);
+            modal.form().setAttribute('action', `/question/${roomId}/${questionId}/delete`);
 
-            modal.buttonAction().addEventListener('click', event => deleteQuestion(question));
             break;
          default:
             window.alert(`Type is different than "delete and check" type="${type}"`);
@@ -84,48 +82,5 @@ export function controlModal() {
       modal.title().innerHTML = title;
       modal.description().innerHTML = `Tem certeza que você deseja ${description} essa pergunta?`;
       modal.buttonAction().innerHTML = `Sim, ${buttonText}`;
-   }
-
-   async function checkQuestion(question) {
-      await sendData('check', question);
-   }
-
-   async function deleteQuestion(question) {
-      await sendData('delete', question);
-   }
-
-   async function sendData(type, question) {
-      const password = modal.input().value;
-      const questionId = question.getAttribute('data-id');
-      const url = `http://localhost:3333/question/${roomId}/${questionId}/${type}`;
-
-      if(!password.trim()) {
-         window.alert('Por favor preencha uma senha');
-         modal.input().value = '';
-         return;
-      } 
-
-      if(!question) return;
-
-      try {
-         await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({ password }),
-         });
-
-         if(type === 'delete') {
-            modal.buttonAction().removeEventListener('click', () => deleteQuestion(question))
-
-         } else {
-            question.classList.add('read');
-            modal.buttonAction().removeEventListener('click', () => checkQuestion(question))
-            
-         }
-
-         closeModal();
-
-      } catch(err) {
-         console.error({ error: err, message: 'Failed to connect with Server!'});
-      }
    }
 }  
